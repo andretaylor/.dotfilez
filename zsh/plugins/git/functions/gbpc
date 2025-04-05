@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# --------------------------------------------------------------------
+# This function prunes and cleans the local git repository.
+# It checks out the main branch, pulls the latest changes,
+# prunes remote branches, deletes merged branches (except main and dev),
+# and performs garbage collection.
+#
+# Example:
+#   gkclean
+# --------------------------------------------------------------------
+function gbpc() {
+  git checkout main &&
+    git pull &&
+    git remote prune origin &&
+    git branch --merged |
+    grep -vE "(^\*|main|dev)" |
+      xargs git branch -d &&
+    git gc
+}

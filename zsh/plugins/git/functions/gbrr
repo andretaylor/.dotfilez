@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# --------------------------------------------------------------------
+# This function deletes a remote git branch.
+# It takes the branch name as an argument and deletes the branch
+# from the remote repository. If no branch name is provided, it prints
+# an error message.
+#
+# Example:
+#   gbrr branch_name
+# --------------------------------------------------------------------
+function gbrr() {
+  if [[ -n "${1}" ]]; then
+    git push origin --delete "${1}"
+  else
+    echo "${fg[red]}Error:${reset_color} Branch name needed!"
+  fi
+}

@@ -1,0 +1,27 @@
+#!/bin/bash
+# --------------------------------------------------------------
+# Print header with a separator
+# Usage: print_header "Header Title" "char"
+#
+# Example:
+#   print_header "My Header"
+#   print_header "Section Title" "*"
+#
+# Output example:
+# ------------
+# | My Header |
+# ------------
+#
+# ****************
+# | Section Title |
+# ****************
+# --------------------------------------------------------------
+function print_header() {
+  local -r STRING_LENGTH=$(($(echo -n "$1" | wc -m) + 4))
+  local char="${2:--}"
+  local -r SEPARATOR=$(printf "%${STRING_LENGTH}s" | tr ' ' "$char")
+
+  echo "${SEPARATOR}"
+  echo "| ${1} |"
+  echo "${SEPARATOR}"
+}

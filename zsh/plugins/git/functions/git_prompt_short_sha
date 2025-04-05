@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------
+# Formats prompt string for current git commit short SHA
+#
+# Example:
+#   $(git_prompt_short_sha)
+# -------------------------------------------------------------------
+function git_prompt_short_sha() {
+  local SHA
+  SHA=$(git rev-parse --short HEAD 2>/dev/null) && echo "$SHA"
+}

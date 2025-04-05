@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# ---------------------------------------------------------------------
+# Function to delete stale branches that have been fully
+# merged into the default branch. It first tries to
+# determine the main branch (usually 'main' or 'master').
+# If the main branch is not found, it falls back to the
+# develop branch. It then iterates over all local branches
+# and deletes those that have been fully merged.
+#
+# Example:
+#   gbds
+# ---------------------------------------------------------------------
+function gbds() {
+  local default_branch
+  local merge_base
+
+  default_branch=$(git_main_branch)
+  ((!$?)) || default_branch=$(git_develop_branch)
+
+  git for-each-ref refs/heads/ "--format=%(refname:short)" |
+    while read -r branch; do
+      merge_base=$(git merge-base "$default_branch" "$branch")
+      if [[ $(git cherry "$default_branch" $(git commit-tree $(git rev-parse "$branch"\^{tree}) -p "$merge_base" -m _)) = -* ]]; then
+        git branch -D "$branch"
+      fi
+    done
+}

@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+#-------------------------------------------------------------
+# Generate a color map
+#
+# Example:
+#   color_map
+#-------------------------------------------------------------
+function color_map() {
+  local items_per_row=$(($COLUMNS / 10))
+  for i in {0..255}; do
+    print -Pn "%K{$i}  %k%F{$i} ${(l:3::0:)i}%f "
+    if (( i % $items_per_row == 0 )); then
+      echo
+    fi
+  done
+}

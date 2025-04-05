@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ---------------------------------------------------------------------
+# This function deletes all local git branches that have been merged
+# into the current branch, except for the main and develop branches.
+#
+# It uses the `git branch --no-color --merged` command to list all
+# merged branches, filters out the main and develop branches using
+# `grep`, and then deletes the remaining branches using
+# `xargs git branch --delete`. Any errors during deletion are
+# redirected to /dev/null.
+#
+# Example:
+#   gbda
+# ---------------------------------------------------------------------
+function gbda() {
+  git branch --no-color --merged |
+    command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" |
+    command xargs git branch --delete 2>/dev/null
+}

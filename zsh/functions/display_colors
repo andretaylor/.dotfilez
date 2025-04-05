@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+#-------------------------------------------------------------
+# Display colors using color codes
+#
+# Example:
+#   display_colors
+#-------------------------------------------------------------
+function display_colors() {
+  local colors=(
+    "black" "red" "green" "yellow"
+    "blue" "magenta" "cyan" "white"
+  )
+  local colorsLen=${#colors[@]}
+
+  for i in {1..$colorsLen}; do
+    local color=${colors[$i]}
+    print -P "%K{$color}  %k%F{$color} $color%f"
+  done
+}

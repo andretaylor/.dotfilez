@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# --------------------------------------------------------------------
+# This function creates a new local and remote branch in Git.
+# It takes the branch name as an argument and creates a new branch
+# based on the current branch. It also pushes the new branch to the remote
+# repository and sets the upstream tracking branch.
+# If no branch name is provided, it prints an error message.
+#
+# Example:
+#   gbn new_branch_name
+# --------------------------------------------------------------------
+function gbn() {
+  if [[ -n "${1}" ]]; then
+    git checkout -b "${1}" &&
+      git push origin "${1}" &&
+      git push --set-upstream origin "${1}"
+  else
+    echo "${fg[red]}Error:${reset_color} Branch name needed!"
+  fi
+}

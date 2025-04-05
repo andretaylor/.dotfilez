@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------
+# Formats prompt string for current git commit long SHA
+#
+# Example:
+#   $(git_prompt_long_sha)
+# -------------------------------------------------------------------
+function git_prompt_long_sha() {
+  local SHA
+  SHA=$(git rev-parse HEAD 2>/dev/null) && echo "$SHA"
+}

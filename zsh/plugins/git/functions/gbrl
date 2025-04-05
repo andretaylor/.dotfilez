@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# --------------------------------------------------------------------
+# This function deletes a local git branch in.
+# It takes the branch name as an argument and deletes the branch
+# from the local repository. If no branch name is provided, it prints
+# an error message.
+#
+# Example:
+#   gbrl branch_name
+# --------------------------------------------------------------------
+function gbrl() {
+  if [[ -n "${1}" ]]; then
+    git branch --delete --force ${1}
+  else
+    echo "${fg[red]}Error:${reset_color} Branch name needed!"
+  fi
+}

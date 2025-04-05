@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------
+# Outputs the email of the current user
+#
+# Example:
+#   $(git_current_user_email)
+# -------------------------------------------------------------------
+function git_current_user_email() {
+  git config user.email 2>/dev/null
+}

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# --------------------------------------------------------------------
+# This function deletes a local and remote branch in Git.
+# It takes the branch name as an argument and deletes the branch
+# from both the local and remote repositories. If no branch name is
+# provided, it prints an error message.
+#
+# Example:
+#   gdlr feature/new-homepage
+# --------------------------------------------------------------------
+function gdlr() {
+  if [[ -n "${1}" ]]; then
+    git push origin --delete ${1}
+    git branch -D ${1}
+  else
+    echo "${fg[red]}Error:${reset_color} Branch name needed!"
+  fi
+}

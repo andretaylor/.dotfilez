@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# --------------------------------------------------------------------
+# This function, gcl, clones a git repository and changes the
+# directory to the cloned repository. It supports various
+# repository URI formats such as ssh, git, ftp, http, and https.
+# If the cloning process fails, the function exits. If the last
+# argument passed is a directory, it changes to that directory.
+# Otherwise, it parses the repository URI and changes to the
+# directory named after the repository.
+#
+# Example:
+#   gcl https://github.com/user/repo.git
+#   gcl git@github.com:user/repo.git
+#   gcl https://github.com/user/repo.git target_directory
+# --------------------------------------------------------------------
+function gcl() {
+  # setopt localoptions extendedglob
+
+  # get repo URI from args based on valid formats: https://git-scm.com/docs/git-clone#URLS
+  local tmp_repo="${@[(r)(ssh://*|git://*|ftp(s)#://*|http(s)#://*|*@*)(.git/#)#]}"
+  local repo="${tmp_repo:-$_}"
+
+  # clone repository and exit if it fails
+  command git clone --recurse-submodules "$@" || return
+
+  # if last arg passed was a directory, that's where the repo was cloned
+  # otherwise parse the repo URI and use the last part as the directory
+  [[ -d "$_" ]] && cd "$_" || cd "${${repo:t}%.git/#}"
+}
+compdef _git gcl=git-clone

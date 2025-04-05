@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# ---------------------------------------------------------------------
+# This function creates a backup branch of the current branch in Git.
+# It generates a new branch name based on the current branch name and the current date.
+# It then checks out the new branch, pushes it to the remote repository,
+# and sets the upstream tracking branch.
+# If the current branch name is not provided, it prints an error message.
+#
+# Example:
+#   gbk
+# ---------------------------------------------------------------------
+function gbk() {
+  local -r current_branch=$(git rev-parse --abbrev-ref HEAD)
+  local -r date_string=$(date +%m%d%Y-%H%M%S)
+
+  if [[ -n "${current_branch}" ]]; then
+    local -r branch_name=${current_branch}--backup-${date_string}
+
+    git checkout -b "${branch_name}" &&
+      git push origin "${branch_name}" &&
+      git push --set-upstream origin "${branch_name}"
+  else
+    echo "${fg[red]}Error:${reset_color} Branch name needed!"
+  fi
+}

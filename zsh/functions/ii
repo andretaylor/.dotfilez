@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+#-------------------------------------------------------------
+# Print system information
+#
+# Example: ii
+#-------------------------------------------------------------
+
+function ii() {
+  clear
+
+  printf "\n"
+  printf "${fg[yellow]}Current date:${reset_color} %s\n" "$(date)"
+  printf "${fg[yellow]}Machine stats:${reset_color} %s\n" "$(uptime)"
+  printf "${fg[yellow]}Memory stats:${reset_color} %s\n" "$(top -l 1 | head -n 10 | grep PhysMem)"
+  printf "${fg[yellow]}Disk space:${reset_color} \n%s\n" "$(df /)"
+  printf "${fg[yellow]}External IP:${reset_color} \n%s\n%s\n" \
+    "$(curl -s ifconfig.me)" \
+    "$(curl -s http://whatismyip.akamai.com/)"
+  printf "${fg[yellow]}Internal IP(s):${reset_color} %s\n" "$(ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print $2}')"
+  printf "${fg[yellow]}Name servers:${reset_color} \n%s\n" "$(grep nameserver /etc/resolv.conf)"
+  printf "\n"
+}

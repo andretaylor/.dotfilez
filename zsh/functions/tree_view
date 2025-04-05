@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# ---------------------------------------------------------------------------
+# Description: Displays the directory structure in a tree-like
+# format.
+#
+# Usage:
+#   tree_view [directory] [depth] [color]
+#
+# Examples:
+#   tree_view                     # Current dir, depth 3
+#   tree_view ~/Documents 2       # Docs, depth 2
+#   tree_view /etc 4 "0;32"      # /etc in green, depth 4
+# ---------------------------------------------------------------------------
+function tree_view() {
+  local dir="${1:-.}"
+  local depth="${2:-3}"
+  local color="${3:-1;34}"
+
+  if [[ -d "$dir" ]]; then
+    find "$dir" -maxdepth "$depth" -type d | awk -v color="$color" '{printf "\033[" color "m%s\033[0m\n", $0}'
+  else
+    echo "Directory not found: $dir"
+  fi
+}

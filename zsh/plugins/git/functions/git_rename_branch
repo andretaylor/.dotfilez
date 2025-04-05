@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------
+# This function renames a local and remote git branch.
+# It takes two arguments: the old branch name and the new branch name.
+# It renames the local branch and then pushes the new branch to the remote
+# repository. If the push is successful, it sets the upstream tracking branch.
+# If either branch name is not provided, it prints an error message.
+#
+# Example:
+#   git_rename_branch feature/old-name feature/new-name
+# -------------------------------------------------------------------
+function git_rename_branch() {
+  if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: $(basename "$0") old_branch new_branch"
+    return 1
+  fi
+
+  # Check if the new branch name already exists locally
+  if git show-ref --verify --quiet refs/heads/"$2"; then
+    echo "Error: Branch '$2' already exists locally."
+    return 1
+  fi
+
+  # Rename branch locally
+  git branch -m "$1" "$2"
+  if [[ $? -ne 0 ]]; then
+    echo "Error: Failed to rename branch locally."
+    return 1
+  fi
+
+  # Check if the branch exists on the remote
+  if [[ ! $(git ls-remote --heads origin "$1") =~ "$1" ]]; then
+    echo "Error: Branch '$1' does not exist on the remote."
+    return 1
+  fi
+
+  # Rename branch in origin remote
+  git push origin :"$1"
+  if ! git push --set-upstream origin "$2"; then
+    echo "Error: Failed to push the new branch to the remote."
+    return 1
+  fi
+
+  # Delete old branch from remote
+  git push origin --delete "$1"
+  if [[ $? -ne 0 ]]; then
+    echo "Error: Failed to delete remote branch '$1'."
+    return 1
+  fi
+}

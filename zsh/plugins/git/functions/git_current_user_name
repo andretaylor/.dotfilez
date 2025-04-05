@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------
+# Outputs the name of the current user from git config
+#
+# Example:
+#   $(git_current_user_name)
+# -------------------------------------------------------------------
+function git_current_user_name() {
+  git config user.name 2>/dev/null
+}

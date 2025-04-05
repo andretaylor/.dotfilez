@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# -------------------------------------------------------------------
+# Outputs the name of the previously checked out branch
+#
+# Example:
+#   # Checkout the previous branch
+#   git checkout $(git_previous_branch)
+#
+# Note: rev-parse --symbolic-full-name @{-1} only prints if it is a branch
+# -------------------------------------------------------------------
+function git_previous_branch() {
+  local ref
+  ref=$(git rev-parse --quiet --symbolic-full-name @{-1} 2>/dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]] || [[ -z $ref ]]; then
+    return # no git repo or non-branch previous ref
+  fi
+  echo "${ref#refs/heads/}"
+}
