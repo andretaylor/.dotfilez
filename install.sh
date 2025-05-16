@@ -66,12 +66,20 @@ function install_dotfilez() {
         source "${DOTFILES_DIR}/macos/set-defaults.sh"
     }
 
+    function setup_gitconfig() {
+        # Set default branch name for new Git repositories
+        git config --global init.defaultBranch main
+        # Set default editor for Git
+        git config --global core.editor "vim"
+    }
+
     print_message "$COLOR_PURPLE" "Setting up dotfilez..." "$SUCCESS_ICON"
 
     setup_zshenv
     setup_homebrew
     install_brewfile
     setup_macos_defaults
+    setup_gitconfig
 
     print_message "$COLOR_GREEN" "Setup complete." "$SUCCESS_ICON"
     print_message "$COLOR_GREEN" "Restarting shell..." "$SUCCESS_ICON"

@@ -5,3 +5,4 @@
 .lesshistory*
 .zlocal*
 *.old
+.zsh_sessions

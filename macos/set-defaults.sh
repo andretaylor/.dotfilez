@@ -159,7 +159,7 @@ function setup_macos_defaults() {
 		sudo systemsetup -settimezone "America/Los_Angeles" >/dev/null
 
 		# Stop iTunes from responding to the keyboard media keys
-		launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
+		# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
 	}
 
 	apply_energy_saving_settings() {
