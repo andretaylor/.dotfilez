@@ -21,8 +21,8 @@ brew 'wget'                       # Install wget, a network downloader
 brew 'yt-dlp'                     # Install yt-dlp, a YouTube video downloader
 brew 'powerlevel10k'              # Install Powerlevel10k, a Zsh theme
 brew 'speedtest-cli'              # Install Speedtest CLI, a command-line interface for testing internet bandwidth
-brew 'ruby-install'             # Install ruby-install, a tool for installing Ruby
-brew 'chruby'                  # Install chruby, a Ruby version manager
+brew 'ruby-install'               # Install ruby-install, a tool for installing Ruby
+brew 'chruby'                     # Install chruby, a Ruby version manager
 
 cask 'alfred'                     # Install Alfred, a productivity application
 cask '1password'                  # Install 1Password, a password manager
@@ -34,4 +34,3 @@ cask 'visual-studio-code'         # Install Visual Studio Code, a code editor
 cask 'vlc'                        # Install VLC, a media player
 cask 'zoom'                       # Install Zoom, a video conferencing app
 cask 'notunes'                    # Install NoTunes, a utility to prevent iTunes from opening
-cask 'flutter'                    # Install Flutter, a UI toolkit for building natively compiled applications
