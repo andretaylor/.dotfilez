@@ -1,0 +1,13 @@
+#!/bin/bash
+
+search_aliases() {
+  local search_term="$1"
+
+  if [[ -n "$search_term" ]]; then
+    alias | grep --color=always "$search_term" | sed -E "s/^([^=]+)(=)(.*)/$(tput setaf 2)\1$(tput setaf 7)\2$(tput setaf 3)\3$(tput sgr0)/"
+  else
+    alias | awk -F= '{
+        printf "\033[32m%-20s\033[37m= \033[33m%s\033[0m\n", $1, $2
+    }'
+  fi
+}
