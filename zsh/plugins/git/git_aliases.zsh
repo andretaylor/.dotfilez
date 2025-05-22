@@ -21,7 +21,7 @@ alias gcan!='git commit --verbose --all --no-edit --amend'                      
 alias gcanf!="gcan! && ggff"                                                                                                               # Amend commit no edit and force push with lease
 alias gcn='git commit --verbose --no-edit'                                                                                                 # Commit with no edit and verbose output
 alias gcn!='git commit --verbose --no-edit --amend'                                                                                        # Amend the last commit with no edit and verbose output
-alias gcm='gca -m'                                                                                                                         # Amend the last commit with no edit and verbose output
+alias gcm='gca -m'                                                                                                                         # Commit all changes with verbose output and message
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"' # Create a WIP commit
 alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'                                      # Undo the last WIP commit
 alias grev='git revert'                                                                                                                    # Revert some existing commits

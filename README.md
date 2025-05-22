@@ -1,10 +1,14 @@
 # dotfilez
 
-`git clone https://github.com/andretaylor/.dotfilez.git $HOME/.config/.dotfilez`
+## Installation
+```
+git clone https://github.com/andretaylor/.dotfilez.git $HOME/.config/.dotfilez
 
-https://wiki.archlinux.org/title/Dotfiles
-https://thevaluable.dev/zsh-install-configure-mouseless/
-https://wiki.archlinux.org/title/XDG_Base_Directory
+cd $HOME/.config/.dotfilez &&  ./install
+```
+
+### ZSH Configuration Files
+Zsh uses several configuration files to set up the shell environment. The following table summarizes the purpose of each file:
 
 | File | Description |
 |------|-------------|
@@ -13,3 +17,9 @@ https://wiki.archlinux.org/title/XDG_Base_Directory
 | `.zshrc` | The main configuration file loaded in interactive shells; contains aliases, functions, options, prompt settings, and completions. |
 | `.zlogin` | Executed at the end of login shell initialization; useful for starting programs that should run once per login. |
 | `.zlogout` | Executed when logging out of a login shell; perfect for cleanup tasks or displaying logout messages. |
+| `.zshhistory` | Stores command history for the Zsh shell; allows users to recall and reuse previously entered commands. |
+
+## Resources
+* https://wiki.archlinux.org/title/Dotfiles
+* https://thevaluable.dev/zsh-install-configure-mouseless/
+* https://wiki.archlinux.org/title/XDG_Base_Directory

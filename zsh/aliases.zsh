@@ -67,10 +67,8 @@ unset directory_index
 # --------------------------------------------------------------
 # List directory contents
 # --------------------------------------------------------------
-alias ls="ls -G"  # Use colorized output for ls
-alias l='ls -lAh' # List all files, long format, human-readable sizes, including hidden files
-# alias l='ls -lah'   # List all files, long format, human-readable sizes
-# alias la='ls -lAh'  # List all files, long format, human-readable sizes, including hidden files
+alias ls="ls -G"    # Use colorized output for ls
+alias l='ls -lAh'   # List all files, long format, human-readable sizes, including hidden files
 alias lc="ll -tcr"  # Sort by/show change time, most recent last
 alias lf="ls -1"    # List just filenames, 1 per line
 alias lk="ll -Sr"   # Sort by size, biggest last

@@ -17,7 +17,20 @@ function install_dotfilez() {
     local SUCCESS_ICON="${COLOR_GREEN}✔${RESET_COLOR}"
     local FAILED_ICON="${COLOR_RED}✖${RESET_COLOR}"
 
-    # Helper function to print messages
+    function countdown_timer_with_message() {
+        local seconds=${1:-5}               # Default to 5 seconds if not specified
+        local message=${2:-"Continuing in"} # Default message
+
+        print_message "$COLOR_YELLOW" "$message:" ""
+
+        for ((i = seconds; i >= 0; i--)); do
+            printf "\r%b%s %d seconds...%b" "$COLOR_YELLOW" "$message" $i "$RESET_COLOR"
+            sleep 1
+        done
+
+        printf "\n"
+    }
+
     function print_message() {
         local color="$1"
         local message="$2"
@@ -82,7 +95,9 @@ function install_dotfilez() {
     setup_gitconfig
 
     print_message "$COLOR_GREEN" "Setup complete." "$SUCCESS_ICON"
+
     print_message "$COLOR_GREEN" "Restarting shell..." "$SUCCESS_ICON"
+    countdown_timer_with_mes 5 "Restarting shell in"
     exec $SHELL -l
 }
 
