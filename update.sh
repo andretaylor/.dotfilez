@@ -90,7 +90,7 @@ function update_dotfilez() {
       print_message "$COLOR_YELLOW" "Cleaning up Homebrew..." "$UPDATE_ICON"
       brew cleanup && print_message "$COLOR_GREEN" "Homebrew cleanup complete" "$SUCCESS_ICON"
     else
-      print_message "$COLOR_RED" "Homebrew not installed. Run install.sh first." "$FAILED_ICON"
+      print_message "$COLOR_RED" "Homebrew not installed. Run install.sh first." "$ERROR_ICON"
     fi
   }
 

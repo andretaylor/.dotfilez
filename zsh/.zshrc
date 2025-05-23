@@ -6,7 +6,7 @@ function configure_shell() {
 
     # Order matters: Load theme first, then aliases, then local configs
     config_files=(
-      "${ZSH_PLUGINS_DIR}/theme.zsh"
+      "${ZSH_PLUGINS_DIR}/theme/theme.zsh"
       "${ZDOTDIR}/config.zsh"
       "${ZSH_PLUGINS_DIR}/git/git_aliases.zsh"
       "${ZDOTDIR}/aliases.zsh"
