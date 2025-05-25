@@ -7,6 +7,7 @@ alias cp="cp -iR"                    # Recursive copy directory entries. Prompt 
 alias df="df -kh"                    # Displays free disk space
 alias du="du -kh"                    # Displays disk usage stats in more readable output
 alias md='mkdir -p'                  # Create directory with parents
+alias mcd='mkdir -p "$1" && cd "$1"' # Create directory and cd into it
 alias mv="mv -i"                     # Move directory entries. Prompt for confirmation
 alias path='echo -e ${PATH//:/\\\n}' # Pretty-print of PATH variables
 alias rd="rmdir"                     # Remove directory
