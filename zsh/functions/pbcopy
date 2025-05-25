@@ -1,0 +1,17 @@
+diff --git a/zsh/functions/search_aliases b/zsh/functions/search_aliases
+index bdb5904..facba20 100644
+--- a/zsh/functions/search_aliases
++++ b/zsh/functions/search_aliases
+@@ -1,6 +1,11 @@
+ #!/bin/bash
+ 
+-search_aliases() {
++# --------------------------------------------------------------
++# Search aliases
++# Usage: search_aliases "search_term"
++# --------------------------------------------------------------
++
++function search_aliases() {
+   local search_term="$1"
+ 
+   if [[ -n "$search_term" ]]; then

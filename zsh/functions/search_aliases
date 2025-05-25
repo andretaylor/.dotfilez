@@ -1,6 +1,11 @@
 #!/bin/bash
 
-search_aliases() {
+# --------------------------------------------------------------
+# Search aliases
+# Usage: search_aliases "search_term"
+# --------------------------------------------------------------
+
+function search_aliases() {
   local search_term="$1"
 
   if [[ -n "$search_term" ]]; then
