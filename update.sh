@@ -6,18 +6,8 @@ function update_dotfilez() {
   # Define base path
   local DOTFILES_DIR="${HOME}/.config/.dotfilez"
 
-  # Define color variables
-  local COLOR_GREEN='\033[0;32m'
-  local COLOR_YELLOW='\033[0;33m'
-  local COLOR_RED='\033[0;31m'
-  local COLOR_PURPLE='\033[0;35m'
-  local COLOR_BLUE='\033[0;34m'
-  local RESET_COLOR='\033[0m'
-
-  # Define icons
-  local SUCCESS_ICON="${COLOR_GREEN}✔${RESET_COLOR}"
-  local FAILED_ICON="${COLOR_RED}✖${RESET_COLOR}"
-  local UPDATE_ICON="${COLOR_BLUE}↻${RESET_COLOR}"
+  source "${DOTFILES_DIR}/plugins/theme/colors.zsh"
+  source "${DOTFILES_DIR}/plugins/theme/icons.zsh"
 
   # Helper function to display a countdown timer with a message
   function countdown() {
