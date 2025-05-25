@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # --------------------------------------------------------------------
 # This function, gcl, clones a git repository and changes the
@@ -14,18 +14,44 @@
 #   gcl git@github.com:user/repo.git
 #   gcl https://github.com/user/repo.git target_directory
 # --------------------------------------------------------------------
+
 function gcl() {
-  # setopt localoptions extendedglob
+  setopt localoptions extendedglob
 
-  # get repo URI from args based on valid formats: https://git-scm.com/docs/git-clone#URLS
-  local tmp_repo="${@[(r)(ssh://*|git://*|ftp(s)#://*|http(s)#://*|*@*)(.git/#)#]}"
-  local repo="${tmp_repo:-$_}"
+  # Find the repository URL from arguments
+  local repo_url=""
+  local target_dir=""
 
-  # clone repository and exit if it fails
+  # Check each argument for a valid git URL pattern
+  for arg in "$@"; do
+    if [[ "$arg" =~ ^(https?://|git://|ssh://|ftp://|ftps://|.*@.*:) ]]; then
+      repo_url="$arg"
+    fi
+  done
+
+  # If no URL found, assume first argument is the URL
+  if [[ -z "$repo_url" ]]; then
+    repo_url="$1"
+  fi
+
+  # Clone repository and exit if it fails
   command git clone --recurse-submodules "$@" || return
 
-  # if last arg passed was a directory, that's where the repo was cloned
-  # otherwise parse the repo URI and use the last part as the directory
-  [[ -d "$_" ]] && cd "$_" || cd "${${repo:t}%.git/#}"
+  # Determine target directory
+  if [[ -d "${@[-1]}" ]]; then
+    # Last argument is an existing directory
+    target_dir="${@[-1]}"
+  else
+    # Extract directory name from repo URL
+    local basename="${repo_url:t}"  # Get basename
+    target_dir="${basename%.git}"    # Remove .git extension
+  fi
+
+  # Change to the target directory if it exists
+  if [[ -d "$target_dir" ]]; then
+    cd "$target_dir"
+  else
+    echo "Warning: Could not determine target directory"
+  fi
 }
 compdef _git gcl=git-clone
