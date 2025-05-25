@@ -9,7 +9,7 @@ alias du="du -kh"                    # Displays disk usage stats in more readabl
 alias md='mkdir -p'                  # Create directory with parents
 alias mv="mv -i"                     # Move directory entries. Prompt for confirmation
 alias path='echo -e ${PATH//:/\\\n}' # Pretty-print of PATH variables
-alias rd=rmdir                       # Remove directory
+alias rd="rmdir"                     # Remove directory
 alias rm="rm -i"                     # Remove directory entries. Prompt for confirmation
 alias rmf="rm -Rf"                   # Recursive remove directory entries with force
 alias which="type -a"                # Locate a program in user path
@@ -55,12 +55,12 @@ alias prj='cd ${HOME}/Documents/projects'
 # --------------------------------------------------------------
 # Directory stack
 # --------------------------------------------------------------
-alias d='dirs -v' # List directory stack
+alias d="dirs -v" # List directory stack
 compdef _dirs d
 
 # Create an alias to change directory to a specific location in the directory stack
 for directory_index in {1..9}; do
-  alias '$directory_index'='cd +${directory_index}'
+  alias "$directory_index'='cd +${directory_index}"
 done
 unset directory_index
 
