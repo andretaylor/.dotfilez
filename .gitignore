@@ -2,7 +2,7 @@
 .zcompcache*
 .zsh_history*
 .zhistory*
-.lesshistory*
+.lesshistor*
 .zlocal*
 *.old
 .zsh_sessions

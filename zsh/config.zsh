@@ -28,8 +28,8 @@ setopt PUSHD_SILENT      # Do not print the directory stack after pushd or popd
 setopt PUSHD_TO_HOME     # pushd with no arguments goes to $HOME
 
 # Shell Behavior
-setopt AUTO_LIST     # Automatically list files when completing
-setopt EXTENDED_GLOB # Enable extended globbing
+setopt AUTO_LIST # Automatically list files when completing
+# setopt EXTENDED_GLOB # Enable extended globbing
 setopt IGNORE_EOF    # Ignore EOF in interactive shell
 setopt LOCAL_OPTIONS # Allow functions to have local options
 setopt LOCAL_TRAPS   # Allow functions to have local traps
