@@ -48,6 +48,9 @@ function setup_macos_defaults() {
 		# Set menu bar clock to 24-hour format
 		defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
 
+		# Show battery percentage in the menu bar
+		defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
+
 		# Increase window resize speed for Cocoa applications (default is 0.2)
 		defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
@@ -197,6 +200,9 @@ function setup_macos_defaults() {
 		# 3: Copy RAM to disk so the system state can still be restored in case of a
 		#    power failure.
 		sudo pmset -a hibernatemode 0
+
+		# Enable Low Power Mode (makes battery icon yellow)
+		sudo pmset -a lowpowermode 1
 
 	}
 
@@ -618,6 +624,7 @@ function setup_macos_defaults() {
 		# List of applications to restart
 		local apps=(
 			"Activity Monitor"
+			"ControlCenter"
 			"Dock"
 			"Finder"
 			"Google Chrome Canary"

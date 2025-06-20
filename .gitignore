@@ -6,3 +6,4 @@
 .zlocal*
 *.old
 .zsh_sessions
+*.code-workspace
