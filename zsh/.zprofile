@@ -9,5 +9,7 @@
 #   - Login-specific commands that should run once per session
 #   - System-wide variables and startup programs
 
-export HOMEBREW_PATH=$(brew --prefix)
-export PATH="${PATH}":"${HOME}/.gem/bin":"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+export HOMEBREW_PATH="$(brew --prefix)"
+export NPM_BIN="$(npm prefix -g)/bin"
+export PATH="${PATH}":"${HOME}/.gem/bin":"${NPM_BIN}":"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

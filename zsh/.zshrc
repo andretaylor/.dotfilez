@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 function configure_shell() {
   function load_config_files() {
@@ -11,8 +11,8 @@ function configure_shell() {
       "${ZSH_PLUGINS_DIR}/git/git_aliases.zsh"
       "${ZDOTDIR}/aliases.zsh"
       "${NVM_DIR}/nvm.sh"
-      "${HOMEBREW_PATH}/opt/chruby/share/chruby/chruby.sh"
-      "${HOMEBREW_PATH}/opt/chruby/share/chruby/auto.sh"
+      # "${HOMEBREW_PATH}/opt/chruby/share/chruby/chruby.sh"
+      # "${HOMEBREW_PATH}/opt/chruby/share/chruby/auto.sh"
       "${ZDOTDIR}/.zlocal.zsh" # Local configs not stored on github
     )
 
