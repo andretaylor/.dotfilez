@@ -9,7 +9,8 @@
 #   - Login-specific commands that should run once per session
 #   - System-wide variables and startup programs
 
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export HOMEBREW_PATH="$(brew --prefix)"
 export NPM_BIN="$(npm prefix -g)/bin"
-export PATH="${PATH}":"${HOME}/.gem/bin":"${NPM_BIN}":"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="${PATH}":"${HOME}/.gem/bin":"${NPM_BIN}":"/Applications/Visual Studio Code.app/Contents/Resources/app/bin":"${ANDROID_HOME}/platform-tools":"${ANDROID_HOME}/emulator"
