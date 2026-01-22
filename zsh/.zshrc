@@ -44,6 +44,9 @@ function configure_shell() {
 
   load_config_files
   configure_autoloadable_functions
+
+  # Load direnv hook
+  eval "$(direnv hook zsh)" >/dev/null 2>&1
 }
 
 configure_shell

@@ -23,14 +23,16 @@ brew 'powerlevel10k'              # Install Powerlevel10k, a Zsh theme
 brew 'speedtest-cli'              # Install Speedtest CLI, a command-line interface for testing internet bandwidth
 brew 'ruby-install'               # Install ruby-install, a tool for installing Ruby
 brew 'chruby'                     # Install chruby, a Ruby version manager
+brew 'direnv'                     # Install direnv, a tool for managing environment variables
 
-cask 'alfred'                     # Install Alfred, a productivity application
 cask '1password'                  # Install 1Password, a password manager
-cask 'rectangle'                  # Install Rectangle, a window management app
+cask 'alfred'                     # Install Alfred, a productivity application
 cask 'iterm2'                     # Install iTerm2, a terminal emulator
+cask 'notunes'                    # Install NoTunes, a utility to prevent iTunes from opening
+cask 'obsidian'                   # Install Obsidian, a note-taking app
+cask 'rectangle'                  # Install Rectangle, a window management app
 cask 'slack'                      # Install Slack, a messaging app for teams
 cask 'spotify'                    # Install Spotify, a music streaming service
 cask 'visual-studio-code'         # Install Visual Studio Code, a code editor
 cask 'vlc'                        # Install VLC, a media player
 cask 'zoom'                       # Install Zoom, a video conferencing app
-cask 'notunes'                    # Install NoTunes, a utility to prevent iTunes from opening
