@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 #-------------------------------------------------------------
 # Enable colors
 #-------------------------------------------------------------
@@ -18,6 +18,7 @@ _comp_options+=(globdots)
 # Options
 # https://zsh.sourceforge.io/Doc/Release/Options.html
 #-------------------------------------------------------------
+typeset -U path  # keep path entries unique (no duplicates)
 
 # Directory Stack
 setopt AUTO_CD           # Change to directory without cd

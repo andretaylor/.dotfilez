@@ -13,4 +13,18 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export HOMEBREW_PATH="$(brew --prefix)"
 export NPM_BIN="$(npm prefix -g)/bin"
-export PATH="${PATH}":"${HOME}/.gem/bin":"${NPM_BIN}":"/Applications/Visual Studio Code.app/Contents/Resources/app/bin":"${ANDROID_HOME}/platform-tools":"${ANDROID_HOME}/emulator"
+
+# Build PATH from a list; only directories that exist are added
+path=($path)     # start from current PATH
+dirs=(
+  "$HOME/.gem/bin"
+  "$NPM_BIN"
+  "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  "$ANDROID_HOME/platform-tools"
+  "$ANDROID_HOME/emulator"
+  "$HOME/.local/bin"
+)
+for dir in $dirs; do
+  [[ -d $dir ]] && path+=("$dir")
+done
+export PATH="${(j.:.)path}"
