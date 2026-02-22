@@ -1,6 +1,11 @@
 #!/bin/zsh
 
 function configure_shell() {
+  # Enable Powerlevel10k instant prompt. Must be sourced before slow operations.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+
   function load_config_files() {
     declare -a config_files
 
@@ -10,9 +15,6 @@ function configure_shell() {
       "${ZDOTDIR}/config.zsh"
       "${ZSH_PLUGINS_DIR}/git/git_aliases.zsh"
       "${ZDOTDIR}/aliases.zsh"
-      "${NVM_DIR}/nvm.sh"
-      # "${HOMEBREW_PATH}/opt/chruby/share/chruby/chruby.sh"
-      # "${HOMEBREW_PATH}/opt/chruby/share/chruby/auto.sh"
       "${ZDOTDIR}/.zlocal.zsh" # Local configs not stored on github
     )
 
@@ -42,11 +44,29 @@ function configure_shell() {
     done
   }
 
+  # Lazy-load NVM
+  function load_nvm_after_instant_prompt() {
+    if [[ -d "${NVM_DIR}" ]]; then
+      _nvm_lazy_load() {
+        unfunction _nvm_lazy_load nvm node npm npx yarn pnpm 2>/dev/null
+        source "${NVM_DIR}/nvm.sh"
+      }
+      nvm()  { _nvm_lazy_load; nvm  "$@"; }
+      node() { _nvm_lazy_load; node "$@"; }
+      npm()  { _nvm_lazy_load; npm  "$@"; }
+      npx()  { _nvm_lazy_load; npx  "$@"; }
+      yarn() { _nvm_lazy_load; yarn "$@"; }
+      pnpm() { _nvm_lazy_load; pnpm "$@"; }
+    fi
+  }
+
   load_config_files
+  load_nvm_after_instant_prompt
   configure_autoloadable_functions
 
   # Load direnv hook
   eval "$(direnv hook zsh)" >/dev/null 2>&1
+
 }
 
 configure_shell

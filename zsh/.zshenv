@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 #-------------------------------------------------------------
 # XDG Base Directory
@@ -10,7 +10,6 @@ export XDG_CACHE_HOME="${XDG_CONFIG_HOME}/cache"      # User cache files
 #-------------------------------------------------------------
 # Zsh Configuration
 #-------------------------------------------------------------
-# export HOMEBREW_PATH="$(brew --prefix)"            # Homebrew path
 export DOTFILEZ="${XDG_CONFIG_HOME}/.dotfilez"     # Dotfilez directory
 export NVM_DIR="${XDG_CONFIG_HOME}/nvm"            # Node Version Manager directory
 export ZDOTDIR="${DOTFILEZ}/zsh"                   # Zsh directory
@@ -40,8 +39,3 @@ export VISUAL="code"  # Set default visual editor to VS Code
 export PAGER="less"   # Set default pager to less
 export LESS="-R"      # Pass -R option to less
 export DIRSTACKSIZE=8 # Directory stack size
-
-# Enable Powerlevel10k instant prompt.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
