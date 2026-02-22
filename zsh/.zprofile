@@ -14,7 +14,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 export HOMEBREW_PATH=$([[ $CPUTYPE == 'arm64' ]] && echo "/opt/homebrew" || echo "/usr/local")
 
 # Derive npm global bin from NVM default alias without loading NVM
-_nvm_default=[[ -f "${NVM_DIR}/alias/default" ]] && _nvm_default=$(<"${NVM_DIR}/alias/default")
+_nvm_default=""; [[ -f "${NVM_DIR}/alias/default" ]] && _nvm_default=$(<"${NVM_DIR}/alias/default")
 export NPM_BIN="${NVM_DIR}/versions/node/${_nvm_default}/bin"
 unset _nvm_default
 
