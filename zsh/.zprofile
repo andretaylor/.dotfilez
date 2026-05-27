@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # .zprofile is a login shell configuration file for zsh that is read at login.
 # It's used for setting environment variables, paths, and executing commands
@@ -11,18 +11,19 @@
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
-export HOMEBREW_PATH=$([[ $CPUTYPE == 'arm64' ]] && echo "/opt/homebrew" || echo "/usr/local")
 
-# Derive npm global bin from NVM default alias without loading NVM
-_nvm_default=""; [[ -f "${NVM_DIR}/alias/default" ]] && _nvm_default=$(<"${NVM_DIR}/alias/default")
-export NPM_BIN="${NVM_DIR}/versions/node/${_nvm_default}/bin"
-unset _nvm_default
+if [[ "$CPUTYPE" == "arm64" ]]; then
+  export HOMEBREW_PREFIX=/opt/homebrew
+else
+  export HOMEBREW_PREFIX=/usr/local
+fi
+export HOMEBREW_PATH="${HOMEBREW_PREFIX}/opt/powerlevel10k"
+
 
 # Build PATH from a list; only directories that exist are added
 path=($path)
 dirs=(
   "$HOME/.gem/bin"
-  "$NPM_BIN"
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
   "$ANDROID_HOME/platform-tools"
   "$ANDROID_HOME/emulator"
@@ -32,3 +33,11 @@ for dir in $dirs; do
   [[ -d $dir ]] && path+=("$dir")
 done
 export PATH="${(j.:.)path}"
+
+
+
+# chruby (path derived from HOMEBREW_PREFIX set above)
+if [[ -d "${HOMEBREW_PREFIX}/opt/chruby" ]]; then
+  source "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh"
+  source "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/auto.sh"
+fi

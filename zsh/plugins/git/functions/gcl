@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # --------------------------------------------------------------------
 # This function, gcl, clones a git repository and changes the

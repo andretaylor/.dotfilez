@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # ---------------------------------------------------------------------
 # Function to delete stale branches that have been fully

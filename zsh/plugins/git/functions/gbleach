@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # --------------------------------------------------------------------
 # This function deletes a local branch in Git if it does not

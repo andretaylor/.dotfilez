@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # --------------------------------------------------------------------
 # This function deletes a local and remote branch in Git.

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 #-------------------------------------------------------------
 # Enable colors
 #-------------------------------------------------------------
@@ -8,8 +8,13 @@ autoload -U colors && colors
 # Completion
 #-------------------------------------------------------------
 
-# Enable completion system, rebuild the cache only if it’s outdated
-autoload -U compinit && compinit -C
+# Enable completion system. Regenerate dump at most once per 24h.
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 # Include hidden files in completion suggestions
 _comp_options+=(globdots)

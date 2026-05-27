@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Define icons
 export CHECK_ICON="${COLOR_GREEN}✔${RESET_COLOR}"

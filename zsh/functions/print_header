@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 # --------------------------------------------------------------
 # Print header with a separator
 # Usage: print_header "Header Title" "char"

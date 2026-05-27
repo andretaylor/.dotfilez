@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 #-------------------------------------------------------------
 # XDG Base Directory
@@ -11,7 +11,6 @@ export XDG_CACHE_HOME="${XDG_CONFIG_HOME}/cache"      # User cache files
 # Zsh Configuration
 #-------------------------------------------------------------
 export DOTFILEZ="${XDG_CONFIG_HOME}/.dotfilez"     # Dotfilez directory
-export NVM_DIR="${XDG_CONFIG_HOME}/nvm"            # Node Version Manager directory
 export ZDOTDIR="${DOTFILEZ}/zsh"                   # Zsh directory
 export HISTFILE="${ZDOTDIR}/.zhistory"             # History filepath
 export ZSH_FUNCTIONS_DIR="${ZDOTDIR}/functions"    # Zsh functions directory

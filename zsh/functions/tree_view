@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # ---------------------------------------------------------------------------
 # Description: Displays the directory structure in a tree-like

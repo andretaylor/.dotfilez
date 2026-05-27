@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Define color variables
 export COLOR_BLUE='\033[0;34m'

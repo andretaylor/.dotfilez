@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # -------------------------------------------------------------------
 # Outputs the name of the current user from git config

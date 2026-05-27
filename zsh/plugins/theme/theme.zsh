@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 # Load color definitions
 source ${ZSH_PLUGINS_DIR}/theme/colors.zsh
 

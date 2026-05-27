@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # -------------------------------------------------------------------
 # This function renames a local and remote git branch.

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # -------------------------------------------------------------------
 # Formats prompt string for current git commit long SHA
