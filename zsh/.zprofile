@@ -12,9 +12,10 @@
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 
-if [[ "$CPUTYPE" == "arm64" ]]; then
+# Detect actual Homebrew install (prefer native arm64 when both exist)
+if [[ -x /opt/homebrew/bin/brew ]]; then
   export HOMEBREW_PREFIX=/opt/homebrew
-else
+elif [[ -x /usr/local/bin/brew ]]; then
   export HOMEBREW_PREFIX=/usr/local
 fi
 export HOMEBREW_PATH="${HOMEBREW_PREFIX}/opt/powerlevel10k"
