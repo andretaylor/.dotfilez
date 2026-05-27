@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+# --------------------------------------------------------------------
+# This function determines the main branch name of a Git repository.
+# It checks for common main branch names (main, trunk, mainline,
+# default, master) and returns the first one it finds. If none of
+# these branches exist, it defaults to "main".
+#
+# Example usage:
+#   main_branch=$(git_main_branch)
+# --------------------------------------------------------------------
+function git_main_branch() {
+  local ref
+  for ref in main trunk mainline default master; do
+    if git show-ref --verify --quiet "refs/heads/$ref"; then
+      echo "$ref"; return
+    fi
+  done
+  echo "main"
+}

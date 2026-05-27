@@ -6,8 +6,8 @@ function update_dotfilez() {
   # Define base path
   local DOTFILES_DIR="${HOME}/.config/.dotfilez"
 
-  source "${DOTFILES_DIR}/plugins/theme/colors.zsh"
-  source "${DOTFILES_DIR}/plugins/theme/icons.zsh"
+  source "${DOTFILES_DIR}/zsh/plugins/theme/colors.zsh"
+  source "${DOTFILES_DIR}/zsh/plugins/theme/icons.zsh"
 
   # Helper function to display a countdown timer with a message
   function countdown() {

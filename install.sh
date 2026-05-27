@@ -97,7 +97,7 @@ function install_dotfilez() {
     print_message "$COLOR_GREEN" "Setup complete." "$SUCCESS_ICON"
 
     print_message "$COLOR_GREEN" "Restarting shell..." "$SUCCESS_ICON"
-    countdown_timer_with_mes 5 "Restarting shell in"
+    countdown_timer_with_message 5 "Restarting shell in"
     exec $SHELL -l
 }
 

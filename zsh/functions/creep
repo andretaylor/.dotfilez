@@ -1,14 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 #-------------------------------------------------------------
 # Take a screenshot every n seconds
 #-------------------------------------------------------------
 function creep() {
-    local -r seconds_to_wait="${1:-15}"
+  local -r seconds_to_wait="${1:-15}"
+  mkdir -p ~/Screenshots
 
-    while :; do
-        echo "📸" "$(date +%H:%M:%S)"
-        screencapture -x ~/Screenshots/"$(date +%s)".png
-        sleep "${seconds_to_wait}"
-    done
+  while :; do
+    echo "📸" "$(date +%H:%M:%S)"
+    screencapture -x ~/Screenshots/"$(date +%s)".png
+    sleep "${seconds_to_wait}"
+  done
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # General Git Commands
 alias g='git'                     # Shortcut for git
@@ -27,12 +27,12 @@ alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--"
 alias grev='git revert'                                                                                                                    # Revert some existing commits
 
 # Branching
-alias gb='git branch'            # List branches
-alias gba='git branch --all'     # List all branches (local and remote)
-alias gbd='git branch --delete'  # Delete a branch
-alias gbl='git blame -w'         # Show what revision and author last modified each line of a file
-alias gbm="git branch --merged"  # List branches whose tips are reachable from HEAD
-alias gcb='git copy-branch-name' # Copy the current branch name
+alias gb='git branch'                                             # List branches
+alias gba='git branch --all'                                      # List all branches (local and remote)
+alias gbd='git branch --delete'                                   # Delete a branch
+alias gbl='git blame -w'                                          # Show what revision and author last modified each line of a file
+alias gbm="git branch --merged"                                   # List branches whose tips are reachable from HEAD
+alias gcb='git rev-parse --abbrev-ref HEAD | tr -d "\n" | pbcopy' # Copy the current branch name
 
 # Checking Out
 alias gco='git checkout'                                    # Switch branches or restore working tree files
