@@ -22,6 +22,7 @@ alias c="clear"                  # Clear screen
 alias hh="history"               # CL history
 alias reload="clear && exec zsh" # Restart zsh shell
 alias grep='grep --color=auto'   # Colorize grep output
+alias sa='search_aliases'        # Search defined aliases
 
 # --------------------------------------------------------------
 # System
@@ -52,6 +53,7 @@ alias docs="cd ~/Documents"
 alias dt='cd ${HOME}/Desktop'
 alias h='cd ~'
 alias prj='cd ${HOME}/Documents/projects'
+alias cdocs='cd ${CLAUDE_DOCS_DIR}'
 
 # --------------------------------------------------------------
 # Directory stack
