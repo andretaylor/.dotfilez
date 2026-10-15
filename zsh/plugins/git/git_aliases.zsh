@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# Complete a `git <subcommand>` alias as if the expansion had been typed.
+# Needed for aliases whose names zsh already maps elsewhere (e.g. grm -> _rm).
+_git_alias_complete() {
+  local -a expansion=(${(z)aliases[$words[1]]})
+  words=($expansion "${(@)words[2,-1]}")
+  (( CURRENT += ${#expansion} - 1 ))
+  service=git _git
+}
+
 # General Git Commands
 alias g='git'                     # Shortcut for git
 alias gcf='git config --list'     # List all git configurations
@@ -11,6 +20,7 @@ alias gaa='git add --all'                 # Stage all changes
 alias gac='git add -A && git commit -m'   # Stage all changes and commit with message
 alias gclean='git clean --interactive -d' # Interactively clean untracked files and directories
 alias grm='git rm'                        # Remove files from the working tree and from the index
+compdef _git_alias_complete grm           # zsh maps grm (GNU rm) to _rm otherwise
 
 # Committing Changes
 alias gc='git commit --verbose'                                                                                                            # Commit with verbose output
@@ -85,6 +95,7 @@ alias gpu='git push upstream'            # Push the current branch to upstream
 alias ggff="git push --force-with-lease" # Force push with lease
 alias gly="gl && yarn"                   # Git latest and run yarn
 alias gcp='git cherry-pick'              # Apply the changes introduced by some existing commits
+compdef _git_alias_complete gcp          # zsh maps gcp (GNU cp) to _cp otherwise
 
 # Diffing
 alias gd='git diff'              # Show changes between commits, commit and working tree, etc.
