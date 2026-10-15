@@ -12,6 +12,7 @@ alias path='echo -e ${PATH//:/\\\n}' # Pretty-print of PATH variables
 alias rd="rmdir"                     # Remove directory
 alias rm="rm -i"                     # Remove directory entries. Prompt for confirmation
 alias rmf="rm -Rf"                   # Recursive remove directory entries with force
+compdef rmf=rm                       # zsh's _mh completion claims `rmf` (MH "remove folder") otherwise
 alias which="type -a"                # Locate a program in user path
 
 # --------------------------------------------------------------
