@@ -18,7 +18,8 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
 elif [[ -x /usr/local/bin/brew ]]; then
   export HOMEBREW_PREFIX=/usr/local
 fi
-export HOMEBREW_PATH="${HOMEBREW_PREFIX}/opt/powerlevel10k"
+# powerlevel10k is installed via Homebrew; theme lives in ${prefix}/share
+export POWERLEVEL10K_PREFIX="${HOMEBREW_PREFIX}"
 
 
 # Build PATH from a list; only directories that exist are added
@@ -35,10 +36,10 @@ for dir in $dirs; do
 done
 export PATH="${(j.:.)path}"
 
-
+eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 
 # chruby (path derived from HOMEBREW_PREFIX set above)
-if [[ -d "${HOMEBREW_PREFIX}/opt/chruby" ]]; then
-  source "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh"
-  source "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/auto.sh"
-fi
+# if [[ -d "${HOMEBREW_PREFIX}/opt/chruby" ]]; then
+#   source "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh"
+#   source "${HOMEBREW_PREFIX}/opt/chruby/share/chruby/auto.sh"
+# fi

@@ -33,8 +33,9 @@ export CLICOLOR=true                     # Enable colorized output for ls
 #-------------------------------------------------------------
 # Miscellaneous Configuration
 #-------------------------------------------------------------
-export EDITOR="nvim"  # Set default editor to Neovim
-export VISUAL="code"  # Set default visual editor to VS Code
-export PAGER="less"   # Set default pager to less
-export LESS="-R"      # Pass -R option to less
-export DIRSTACKSIZE=8 # Directory stack size
+export VISUAL="code"                                   # Set default visual editor to VS Code
+export EDITOR="nvim"                                   # Set default editor to Neovim
+export PAGER="less"                                    # Set default pager to less
+export LESS="-R"                                       # Pass -R option to less
+export DIRSTACKSIZE=8                                  # Directory stack size
+export CLAUDE_DOCS_DIR="${HOME}/Documents/claude-docs" # Directory for Claude documents
